@@ -24,12 +24,11 @@ object PhoenixRead {
 
 
     // Load data from TABLE1
-
-      val hbase_zookeeper_url = "jdbc:phoenix:cod-hvtur2ovawfr-leader0.aws-odx.ummd-fsio.int.cldr.work,cod-hvtur2ovawfr-master0.aws-odx.ummd-fsio.int.cldr.work,cod-hvtur2ovawfr-master1.aws-odx.ummd-fsio.int.cldr.work:2181:/hbase"
+    val hbase_zookeeper_url = args(0)
     val df = spark.sqlContext
       .read
       .format("org.apache.phoenix.spark")
-      .options(Map("table" -> "TABLE1", "zkUrl" -> hbase_zookeeper_url))
+      .options(Map("table" -> "OUTPUT_TEST_TABLE1", "zkUrl" -> hbase_zookeeper_url))
       .load
 
       df.show()
