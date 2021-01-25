@@ -11,7 +11,6 @@ object PhoenixReadWrite {
     val spark = SparkSession
       .builder()
       .appName("phoenix-test")
-      .master("local")
       .getOrCreate()
     try {
 
@@ -31,7 +30,7 @@ object PhoenixReadWrite {
         .load()
 
       df.show()
-
+      println("row count is:" + df.count())
 
 
     } finally {
